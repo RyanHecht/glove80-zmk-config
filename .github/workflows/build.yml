@@ -11,8 +11,9 @@ jobs:
       keymap: config/glove80.keymap
       zmk_keyboard: glove80
       keyboard_name: Glove80
+      export_args: '--label "&kp LG(LA(SPACE))=Dictate"'
       targets: >-
         [{"name": "left", "file_glob": "*glove80_lh*.uf2", "volume_label": "GLV80LHBOOT",
-          "hint": "plug the left half in directly, hold Lower + Magic, tap Tab", "central": true},
+          "hint": "plug the left half in directly, hold Magic (bottom-left corner), tap Esc (left of A)", "central": true},
          {"name": "right", "file_glob": "*glove80_rh*.uf2", "volume_label": "GLV80RHBOOT",
-          "hint": "plug the right half in by USB, hold Lower + Magic, tap '", "central": false}]
+          "hint": "plug the right half in by USB, hold Magic, tap ' (right of ;)", "central": false}]
