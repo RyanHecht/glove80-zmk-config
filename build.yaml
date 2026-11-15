@@ -1,9 +1,7 @@
-# Studio + Raw HID only on the left (central) half.
-# No studio-rpc-usb-uart snippet: its USB serial interface breaks KVMs that
-# emulate the keyboard. Studio runs over Raw HID (KeyPeek tunnel) and BLE.
+# Raw HID (KeyPeek layer notifier) on the left (central) half only.
+# No ZMK Studio: the display keymap comes from the build (layerview.json).
 ---
 include:
   - board: glove80_lh
     shield: raw_hid_adapter
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: glove80_rh

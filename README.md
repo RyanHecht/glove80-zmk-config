@@ -1,12 +1,13 @@
 # Glove80 ZMK config
 
-My Glove80 keymap, built with GitHub Actions on MoErgo's ZMK (v26.09) plus:
+My Glove80 keymap (`config/glove80.keymap`, exported from the MoErgo Layout Editor), built on MoErgo's ZMK (v26.09) plus the [KeyPeek layer notifier](https://github.com/srwi/zmk-keypeek-layer-notifier) for a live layer display.
 
-- **ZMK Studio** so tools can read the keymap straight from the keyboard
-- **[zmk-raw-hid](https://github.com/zzeneg/zmk-raw-hid)** + **[zmk-keypeek-layer-notifier](https://github.com/srwi/zmk-keypeek-layer-notifier)**, which report the active layers and key presses to the host (the [KeyPeek](https://github.com/srwi/keypeek) protocol)
+Every push builds firmware and publishes a Release with both halves' UF2s, a `flash.json` manifest and a [layerview](https://github.com/RyanHecht/layerview) display file.
 
-`config/glove80.keymap` is exported from the MoErgo Layout Editor. Studio's unlock key is on the Magic layer (Magic + H).
+## Flash
 
-## Build & flash
+```sh
+zmk-uf2-flash --repo RyanHecht/glove80-zmk-config
+```
 
-Push, then download the `firmware` artifact from the Actions run. Flash `glove80_lh` to the left half and `glove80_rh` to the right half (MoErgo's [flashing guide](https://docs.moergo.com/glove80-user-guide/customizing-key-layout/)).
+It downloads the latest release, waits for each half's bootloader drive, copies the firmware (skipping a half whose firmware didn't change), and registers the keymap for the layer display.

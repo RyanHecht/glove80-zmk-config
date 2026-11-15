@@ -1,6 +1,18 @@
-name: Build ZMK firmware
+name: Build & release
+
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+  release:
+    uses: RyanHecht/layerview/.github/workflows/zmk-release.yml@main
+    permissions:
+      contents: write
+    with:
+      keymap: config/glove80.keymap
+      zmk_keyboard: glove80
+      keyboard_name: Glove80
+      targets: >-
+        [{"name": "left", "file_glob": "*glove80_lh*.uf2", "volume_label": "GLV80LHBOOT",
+          "hint": "plug the left half in directly, hold Lower + Magic, tap Tab", "central": true},
+         {"name": "right", "file_glob": "*glove80_rh*.uf2", "volume_label": "GLV80RHBOOT",
+          "hint": "plug the right half in by USB, hold Lower + Magic, tap '", "central": false}]
