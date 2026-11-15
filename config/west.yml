@@ -1,0 +1,25 @@
+# Firmware sources, pinned to known commits.
+manifest:
+  remotes:
+    - name: moergo-sc
+      url-base: https://github.com/moergo-sc
+    - name: zzeneg
+      url-base: https://github.com/zzeneg
+    - name: srwi
+      url-base: https://github.com/srwi
+  projects:
+    # MoErgo's ZMK for the Glove80 (includes ZMK Studio). v26.09
+    - name: zmk
+      remote: moergo-sc
+      revision: ce69e85f585c724142aae37ddf8a7e019ff19e93
+      import: app/west.yml
+    # Raw HID transport (USB + BLE)
+    - name: zmk-raw-hid
+      remote: zzeneg
+      revision: 6a37765dfab6197292e7a9f47305dcf87386d56a
+    # KeyPeek: reports active layers + key positions, tunnels Studio RPC over Raw HID
+    - name: zmk-keypeek-layer-notifier
+      remote: srwi
+      revision: 23a9e46287e083a66d1d6f1939f68efb1f0f5295
+  self:
+    path: config
