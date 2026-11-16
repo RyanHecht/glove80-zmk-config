@@ -3,15 +3,17 @@ manifest:
   remotes:
     - name: moergo-sc
       url-base: https://github.com/moergo-sc
+    - name: darknao
+      url-base: https://github.com/darknao
     - name: zzeneg
       url-base: https://github.com/zzeneg
     - name: srwi
       url-base: https://github.com/srwi
   projects:
-    # MoErgo's ZMK for the Glove80 (includes ZMK Studio). v26.09
+    # MoErgo's ZMK v26.09 + per-key/per-layer RGB (moergo-sc/zmk PR #36, darknao:rgb-layer-24.12)
     - name: zmk
-      remote: moergo-sc
-      revision: ce69e85f585c724142aae37ddf8a7e019ff19e93
+      remote: darknao
+      revision: 22d6941d055bf05f006c9d4d7088e9564d31ba3a
       import: app/west.yml
     # Raw HID transport (USB + BLE)
     - name: zmk-raw-hid
