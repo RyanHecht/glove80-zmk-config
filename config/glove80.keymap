@@ -672,21 +672,7 @@
             layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
 
-        // GE - combo_ctrl_tab_switcher_left
-//
-        combo_left_ctrl_tab_switcher_v1_TKZ {
-            key-positions = <POS_LH_T2 POS_LH_T5>;
-            bindings = <&mod_tab_chord_v2_TKZ LCTRL LAYER_Cursor>;
-            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
-        };
 
-        // GE - meh_ACS_right
-//
-        combo_right_meh_ACS_v1_TKZ {
-            key-positions = <POS_RH_T2 POS_RH_T5>;
-            bindings = <&kp LA(LC(LSHFT))>;
-            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
-        };
 
         // GE - combo_gaming_layer_toggle
         combo_gaming_layer_toggle_v1_TKZ {
@@ -703,28 +689,17 @@
             layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
 
-        // GE - combo_caps_lock_left
-        combo_left_caps_lock_v1_TKZ {
-            key-positions = <POS_LH_T6 POS_LH_T2>;
-            bindings = <&kp CAPS>;
-            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
-        };
 
-        // GE - combo_caps_word_left
-        combo_left_caps_word_v1_TKZ {
-            key-positions = <POS_LH_T5 POS_LH_T4>;
-            bindings = <&caps_word>;
-            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
-        };
 
-        // GE - combo_caps_word_right
-        combo_right_caps_word_v1_TKZ {
-            key-positions = <POS_RH_T5 POS_RH_T4>;
-            bindings = <&caps_word>;
-            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
-        };
 
         // GE - combo_win_tab_switcher_left
+        // Both thumb Shifts together -> Caps Word
+        combo_both_shifts_caps_word {
+            timeout-ms = <50>;
+            key-positions = <POS_LH_T5 POS_RH_T5>;
+            bindings = <&caps_word>;
+            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
+        };
         combo_left_win_tab_switcher_v1_TKZ {
             key-positions = <POS_LH_T1 POS_LH_T6>;
             bindings = <&mod_tab_chord_v2_TKZ LGUI LAYER_Cursor>;
@@ -745,8 +720,8 @@
             &kp EQUAL                  &kp N1                 &kp N2                   &kp N3                   &kp N4  &kp N5                                                                                                                                   &kp N6                    &kp N7                    &kp N8                  &kp N9                      &kp N0  &kp MINUS
               &kp TAB                   &kp Q                  &kp W                    &kp E                    &kp R   &kp T                                                                                                                                    &kp Y                     &kp U                     &kp I                   &kp O                       &kp P   &kp BSLH
               &kp ESC  &HRM_left_pinky LGUI A  &HRM_left_ring LALT S  &HRM_left_middy LCTRL D  &HRM_left_index LSHFT F   &kp G                                                                                                                                    &kp H  &HRM_right_index RSHFT J  &HRM_right_middy RCTRL K  &HRM_right_ring LALT L  &HRM_right_pinky RGUI SEMI    &kp SQT
-            &kp GRAVE                   &kp Z                  &kp X                    &kp C                    &kp V   &kp B                        &kp LSHFT  &kp LCTRL    &mo LAYER_Lower  &kp LGUI                      &kp RCTRL                         &kp RSHFT   &kp N                     &kp M                 &kp COMMA                 &kp DOT                    &kp FSLH  &kp PG_UP
- &magic LAYER_Magic 0                &kp HOME                &kp END                 &kp LEFT                &kp RIGHT          &kp BSPC    &thumb_v2_TKZ LAYER_Cursor DEL  &kp LALT  &kp LG(LA(SPACE))  &thumb_v2_TKZ LAYER_Mouse RET  &space_v3_TKZ LAYER_Symbol SPACE                            &kp UP                  &kp DOWN                &kp LBKT                    &kp RBKT  &kp PG_DN
+            &kp GRAVE                   &kp Z                  &kp X                    &kp C                    &kp V   &kp B                        &thumb_v2_TKZ LAYER_Lower RET  &kp LCTRL    &kp LGUI  &kp LGUI                      &kp RCTRL                         &thumb_v2_TKZ LAYER_Mouse RET   &kp N                     &kp M                 &kp COMMA                 &kp DOT                    &kp FSLH  &kp PG_UP
+ &magic LAYER_Magic 0                &kp HOME                &kp END                 &kp LEFT                &kp RIGHT          &space_v3_TKZ LAYER_Cursor SPACE    &kp LSHFT  &kp BSPC  &kp LG(LA(SPACE))  &kp RSHFT  &space_v3_TKZ LAYER_Symbol SPACE                            &kp UP                  &kp DOWN                &kp LBKT                    &kp RBKT  &kp PG_DN
             >;
         };
 
@@ -811,8 +786,8 @@
   &none           &none                &none                &none                &none           &none                                                                                &none                &none                &none                &none            &none     &none
   &none           &none       &msc SCRL_LEFT         &mmv MOVE_UP      &msc SCRL_RIGHT           &none                                                                       &msc SCRL_LEFT            &mkp LCLK            &mkp MCLK            &mkp RCLK  &msc SCRL_RIGHT     &none
   &none    &msc SCRL_UP       &mmv MOVE_LEFT       &mmv MOVE_DOWN      &mmv MOVE_RIGHT    &msc SCRL_UP                                                                         &msc SCRL_UP  &mo LAYER_MouseFast  &mo LAYER_MouseWarp  &mo LAYER_MouseSlow        &kp K_APP  &mkp MB4
-  &none  &msc SCRL_DOWN  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN  &mkp MCLK  &kp K_APP  &mkp MB5  &kp LC(X)  &kp LC(C)  &kp LC(LC(V))  &msc SCRL_DOWN       &mmv MOVE_LEFT         &mmv MOVE_UP       &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5
-  &none           &none            &kp LC(X)            &kp LC(C)            &kp LC(V)                  &mkp LCLK  &mkp RCLK  &mkp MB4      &none      &none          &none                            &kp RSHFT            &kp RCTRL             &kp RALT         &kp RGUI     &none
+  &none  &msc SCRL_DOWN  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN  &mkp MCLK  &kp K_APP  &mkp MB5  &kp LC(X)  &kp LC(C)  &none  &msc SCRL_DOWN       &mmv MOVE_LEFT         &mmv MOVE_UP       &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5
+  &none           &none            &kp LC(X)            &kp LC(C)            &kp LC(V)                  &mkp LCLK  &mkp RCLK  &mkp MB4      &none      &kp LC(LC(V))          &none                            &kp RSHFT            &kp RCTRL             &kp RALT         &kp RGUI     &none
             >;
         };
 
