@@ -10,6 +10,7 @@
 #define MAJ &ug 0xFF00C0
 #define AZU &ug 0x2060FF
 #define PUR &ug 0x9020FF
+#define GOL &ug 0xFFC000
 #define ___ &ug 0x000000
 
 / {
@@ -46,6 +47,17 @@
                 ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___
             >;
             layer-id = <LAYER_Autoshift>;
+        };
+        LowerLeds {
+            bindings = <
+                ___ ___ ___ ___ ___ ___ ___ ___ ___ ___
+                ___ ___ ___ ___ ___ ___ ___ CYN ___ CYN CYN ___
+                ___ ___ ___ ___ ___ ___ ___ GOL GOL GOL CYN ___
+                ___ ___ ___ ___ ___ ___ ___ GOL GOL GOL CYN ___
+                ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ CYN GOL GOL GOL CYN ___
+                ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ GOL GOL CYN CYN ___
+            >;
+            layer-id = <LAYER_Lower>;
         };
     };
 };

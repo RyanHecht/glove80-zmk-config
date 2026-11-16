@@ -629,6 +629,15 @@
             quick-tap-ms = <150>;
             require-prior-idle-ms = <0>;
         };
+        space_cursor: space_cursor {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <150>;
+        };
 
         // thumb_layer_access - TailorKey
         thumb_v2_TKZ: thumb_v2_TKZ {
@@ -682,12 +691,6 @@
             layers = <LAYER_HRM_WinLinx LAYER_Gaming>;
         };
 
-        // GE - combo_caps_lock_right
-        combo_right_caps_lock_v1_TKZ {
-            key-positions = <POS_RH_T2 POS_RH_T6>;
-            bindings = <&kp CAPS>;
-            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
-        };
 
 
 
@@ -696,13 +699,8 @@
         // Both thumb Shifts together -> Caps Word
         combo_both_shifts_caps_word {
             timeout-ms = <50>;
-            key-positions = <POS_LH_T5 POS_RH_T5>;
+            key-positions = <POS_LH_T6 POS_RH_T6>;
             bindings = <&caps_word>;
-            layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
-        };
-        combo_left_win_tab_switcher_v1_TKZ {
-            key-positions = <POS_LH_T1 POS_LH_T6>;
-            bindings = <&mod_tab_chord_v2_TKZ LGUI LAYER_Cursor>;
             layers = <LAYER_HRM_WinLinx LAYER_Autoshift>;
         };
     };
@@ -720,8 +718,8 @@
             &kp EQUAL                  &kp N1                 &kp N2                   &kp N3                   &kp N4  &kp N5                                                                                                                                   &kp N6                    &kp N7                    &kp N8                  &kp N9                      &kp N0  &kp MINUS
               &kp TAB                   &kp Q                  &kp W                    &kp E                    &kp R   &kp T                                                                                                                                    &kp Y                     &kp U                     &kp I                   &kp O                       &kp P   &kp BSLH
               &kp ESC  &HRM_left_pinky LGUI A  &HRM_left_ring LALT S  &HRM_left_middy LCTRL D  &HRM_left_index LSHFT F   &kp G                                                                                                                                    &kp H  &HRM_right_index RSHFT J  &HRM_right_middy RCTRL K  &HRM_right_ring LALT L  &HRM_right_pinky RGUI SEMI    &kp SQT
-            &kp GRAVE                   &kp Z                  &kp X                    &kp C                    &kp V   &kp B                        &thumb_v2_TKZ LAYER_Lower RET  &kp LCTRL    &kp LGUI  &kp LGUI                      &kp RCTRL                         &thumb_v2_TKZ LAYER_Mouse RET   &kp N                     &kp M                 &kp COMMA                 &kp DOT                    &kp FSLH  &kp PG_UP
- &magic LAYER_Magic 0                &kp HOME                &kp END                 &kp LEFT                &kp RIGHT          &space_v3_TKZ LAYER_Cursor SPACE    &kp LSHFT  &kp BSPC  &kp LG(LA(SPACE))  &kp RSHFT  &space_v3_TKZ LAYER_Symbol SPACE                            &kp UP                  &kp DOWN                &kp LBKT                    &kp RBKT  &kp PG_DN
+            &kp GRAVE                   &kp Z                  &kp X                    &kp C                    &kp V   &kp B                        &kp RET  &kp LCTRL    &kp LGUI  &kp LGUI                      &kp RCTRL                         &thumb_v2_TKZ LAYER_Mouse RET   &kp N                     &kp M                 &kp COMMA                 &kp DOT                    &kp FSLH  &kp PG_UP
+ &magic LAYER_Magic 0                &kp HOME                &kp END                 &kp LEFT                &kp RIGHT          &space_cursor LAYER_Cursor SPACE    &kp BSPC  &kp LSHFT  &kp RSHFT  &kp LG(LA(SPACE))  &space_v3_TKZ LAYER_Symbol SPACE                            &kp UP                  &kp DOWN                &kp LBKT                    &kp RBKT  &kp PG_DN
             >;
         };
 
@@ -771,7 +769,7 @@
 
         layer_Symbol {
             bindings = <
-               &none          &none         &none                 &none          &none                                                                                                        &none        &none      &none     &none   &none
+               &kp C_BRI_DN          &kp C_BRI_UP         &kp C_PREV                 &kp C_NEXT          &kp C_PP                                                                                                        &kp C_MUTE        &kp C_VOL_DN      &kp C_VOL_UP     &kp PSCRN   &none
                &none      &kp GRAVE    &kp LS(N9)            &kp LS(N0)       &kp SEMI     &kp COMMA                                                                    &none                 &none        &none      &none     &none   &none
           &kp LS(N1)       &kp LBKT  &kp LS(LBKT)          &kp LS(RBKT)       &kp RBKT  &kp LS(FSLH)                                                                  &kp DOT               &kp DEL  &kp LS(TAB)    &kp INS   &kp ESC   &none
           &kp LS(N3)     &kp LS(N6)     &kp EQUAL         &kp LS(MINUS)     &kp LS(N4)    &kp LS(N8)                                                                &kp COMMA              &kp BSPC      &kp TAB  &kp SPACE   &kp RET   &none
@@ -830,7 +828,7 @@
                &trans         &none           &none           &none            &none   &kp HOME                                                                 &kp LS(N9)  &kp KP_NUM     &kp EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
                &trans         &none           &none    &kp UP_ARROW            &none    &kp END                                                                 &kp LS(N0)   &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS   &kp SCROLLLOCK
                &trans         &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                                 &kp LS(N5)   &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &none
-               &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &trans  &trans  &to LAYER_HRM_WinLinx  &trans  &trans  &trans   &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
+               &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans   &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
  &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11          &kp F12             &trans  &trans                 &trans  &trans  &trans  &trans               &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
             >;
         };
@@ -841,7 +839,7 @@
  &to LAYER_HRM_WinLinx            &none  &to LAYER_Typing            &none            &none  &to LAYER_Autoshift                                                         &none   &none   &none   &none       &none           &none
                  &none  &rgb_ug RGB_SPI   &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI      &rgb_ug RGB_TOG                                                         &none   &none   &none   &none       &none           &none
            &bootloader  &rgb_ug RGB_SPD   &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD      &rgb_ug RGB_EFF                                                         &none   &none   &none   &none       &none     &bootloader
-            &sys_reset            &none             &none            &none            &none                &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none       &none      &sys_reset
+            &sys_reset            &none             &none            &none            &none                &none   &bt_2   &bt_3         &none   &none   &none   &none   &tog LAYER_Lower   &none   &none   &none       &none      &sys_reset
                  &none            &none             &none            &none            &none                        &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none       &none           &none
             >;
         };

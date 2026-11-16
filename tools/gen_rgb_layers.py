@@ -11,7 +11,7 @@ import sys
 OFF = "___"
 COLORS = {  # name -> 0xRRGGBB
     "GRN": 0x00FF40, "ORN": 0xFF7000, "CYN": 0x00C8FF, "RED": 0xFF0000,
-    "BLU": 0x0030FF, "MAJ": 0xFF00C0, "AZU": 0x2060FF, "PUR": 0x9020FF,
+    "BLU": 0x0030FF, "MAJ": 0xFF00C0, "AZU": 0x2060FF, "PUR": 0x9020FF, "GOL": 0xFFC000,
 }
 HOME_ROW = [35, 36, 37, 38, 41, 42, 43, 44]
 
@@ -46,6 +46,17 @@ def gaming(keymap: str) -> list[str]:
     return out
 
 
+def numpad(keymap: str) -> list[str]:
+    out = []
+    for b in layer_bindings(keymap, "Lower"):
+        key = b.split()[1] if b.startswith("&kp ") else ""
+        out.append("GOL" if re.fullmatch(r"(KP_)?N\d", key) else
+                   "CYN" if key.startswith("KP_") or key in ("COMMA", "DOT") else OFF)
+    for p in combo_positions(keymap, "&tog LAYER_Lower"):
+        out[p] = "MAJ"
+    return out
+
+
 def home_row(color: str) -> list[str]:
     return [color if p in HOME_ROW else OFF for p in range(80)]
 
@@ -69,6 +80,7 @@ def main() -> None:
         + node("Gaming", gaming(keymap))
         + node("Typing", home_row("AZU"))
         + node("Autoshift", home_row("PUR"))
+        + node("Lower", numpad(keymap))
         + "    };\n};\n"
     )
     open(sys.argv[2], "w", encoding="utf-8").write(out)
