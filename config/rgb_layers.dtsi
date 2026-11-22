@@ -19,8 +19,8 @@
             bindings = <
                 RED ___ ___ ___ ___ ___ ___ ___ ___ ___
                 ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___
-                ___ ORN ORN ORN ORN ORN ___ ___ ___ ___ ___ ___
-                AZU CYN ORN GRN ORN ORN ___ ___ ___ ___ ___ ___
+                ORN ORN ORN ORN ORN AZU ___ ___ ___ ___ ___ ___
+                RED CYN ORN GRN ORN ORN ___ ___ ___ ___ ___ ___
                 ORN CYN GRN GRN GRN MAJ CYN CYN PUR RED ___ BLU ___ ___ ___ ___ AZU ___
                 ___ CYN ORN ORN MAJ CYN CYN BLU ___ ___ ___ ___ ___ ___ ___ ___
             >;
