@@ -39,11 +39,19 @@ def gaming(keymap: str) -> list[str]:
     mods, out = {"LSHFT", "RSHFT", "LCTRL", "RCTRL", "LALT", "RALT", "TAB", "SPACE"}, []
     for b in layer_bindings(keymap, "Gaming"):
         key = b.split()[1] if b.startswith("&kp ") else ""
+        if b.startswith("&gc_"):                              # game-mode helpers (chat / leave)
+            out.append("AZU" if b.startswith("&gc_chat") else "PUR"); continue
         out.append("GRN" if key in move else "ORN" if key in abil else "CYN" if key in mods
                    else "RED" if key == "ESC" else "BLU" if key in ("RET", "ENTER") else OFF)
     for p in combo_positions(keymap, "&tog LAYER_Gaming"):   # how to get back out
         out[p] = "MAJ"
     return out
+
+
+def game_chat(keymap: str) -> list[str]:
+    """Chat mode: only the ways back into the game are lit (send = blue, cancel = red)."""
+    return ["BLU" if b == "&gc_send" else "RED" if b == "&gc_cancel" else OFF
+            for b in layer_bindings(keymap, "GameChat")]
 
 
 def numpad(keymap: str) -> list[str]:
@@ -81,6 +89,7 @@ def main() -> None:
         + node("Typing", home_row("AZU"))
         + node("Autoshift", home_row("PUR"))
         + node("Lower", numpad(keymap))
+        + node("GameChat", game_chat(keymap))
         + "    };\n};\n"
     )
     open(sys.argv[2], "w", encoding="utf-8").write(out)
