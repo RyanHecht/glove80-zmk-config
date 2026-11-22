@@ -9,6 +9,8 @@ manifest:
       url-base: https://github.com/zzeneg
     - name: srwi
       url-base: https://github.com/srwi
+    - name: ryanhecht
+      url-base: https://github.com/RyanHecht
   projects:
     # MoErgo's ZMK v26.09 + per-key/per-layer RGB (moergo-sc/zmk PR #36, darknao:rgb-layer-24.12)
     - name: zmk
@@ -23,5 +25,9 @@ manifest:
     - name: zmk-keypeek-layer-notifier
       remote: srwi
       revision: 23a9e46287e083a66d1d6f1939f68efb1f0f5295
+    # layerview: lets the computer switch layers (focus rules, e.g. Gaming while Minecraft is focused)
+    - name: layerview
+      remote: ryanhecht
+      revision: 5597d4f7d8aa308bb5093755243ccbdfbca99997
   self:
     path: config
